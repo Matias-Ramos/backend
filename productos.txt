@@ -1,0 +1,6 @@
+[
+    {"title":"Manzana","price":27.2,"description":"La tradicional fruta roja y dulce.","id":1},
+    {"title":"Naranja","price":30,"description":"Fruta cítrica y redonda","id":2},
+    {"title":"Banana","price":25.4,"description":"Dulce de Ecuador.","id":3},
+    {"title":"Pera","price":40,"description":"Proveniente de Santa Fe.","id":4}
+]

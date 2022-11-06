@@ -83,14 +83,4 @@ class Container {
   }
 }
 
-//instance
-let myContainer = new Container("./data.txt");
-//var
-const product = {
-  title: "Manzana",
-  price: 27.2,
-  description: "La tradicional fruta roja y dulce.",
-};
-
-exports.myContainer = myContainer;
-exports.product = product;
+module.exports = Container;

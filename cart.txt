@@ -1,0 +1,1 @@
+[{"title":"Manzana","price":27.2,"description":"La tradicional fruta roja y dulce.","id":1},{"title":"Naranja","price":30,"description":"Fruta cítrica y redonda","id":10}]
