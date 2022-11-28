@@ -1,0 +1,17 @@
+<style>
+    li{list-style: none;}
+    b{color:blue;}
+    .dateTime{color:brown}
+    i{color:green}
+</style>
+
+{{#if chatRecord.length}}
+<h2>Historial de chats</h2>
+<div>
+    <ol>
+        {{#each chatRecord}}
+            <li class="mt-1"><b>{{this.userEmail}}</b> <span class="dateTime">[ {{../dateTime}} ]</span> : <i>{{this.userMssg}}</i></li>
+        {{/each}}
+    </ol>
+</div>
+{{/if}}
