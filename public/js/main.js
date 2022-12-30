@@ -36,40 +36,40 @@ async function buildHtmlProductTable(purchaseList) {
 
 //------------------------------------chat-------------------------------------------------
 
-// const userEmail = document.getElementById('userEmail');
-// const userMssg = document.getElementById('userMssg');
-// const btnSendMssg = document.getElementById('btnSendMssg');
-// const formChat = document.getElementById('formChat')
+const userEmail = document.getElementById('userEmail');
+const userMssg = document.getElementById('userMssg');
+const btnSendMssg = document.getElementById('btnSendMssg');
+const formChat = document.getElementById('formChat')
 
-// formChat.addEventListener('submit', e => {
-//     e.preventDefault();
-//     const message = {
-//         userEmail : userEmail.value,
-//         userMssg : userMssg.value
-//     }
-//     socket.emit('newMessageObj', message);
-//     formChat.reset()
-//     userMssg.focus()
-// })
+formChat.addEventListener('submit', e => {
+    e.preventDefault();
+    const message = {
+        email : userEmail.value,
+        message : userMssg.value
+    }
 
-// socket.on('newChatRecord', chatRecord => {
-//     const chatRecordSection = document.getElementById('chatRecordSection');
+    socket.emit('newMessageObj', message);
+    formChat.reset()
+    userMssg.focus()
+})
 
-//     buildHtmlChatOl(chatRecord)
-//     .then( orderedList => {
-//         chatRecordSection.innerHTML = orderedList;
-//     } )
-// })
+socket.on('newChatRecord', chatRecord => {
+    const chatRecordSection = document.getElementById('chatRecordSection');
 
-// async function buildHtmlChatOl(chatRecord) {
+    buildHtmlChatOl(chatRecord)
+    .then( orderedList => {
+        chatRecordSection.innerHTML = orderedList;
+    } )
+})
 
-//     const dateTime = new Date().toLocaleString();
-//     const respuesta = await fetch('plantillas/ol-chat.hbs');
-//     const plantilla = await respuesta.text();
-//     const template = Handlebars.compile(plantilla);
-//     const html = template({ chatRecord:chatRecord, dateTime:dateTime}  );
-//     return html;
-// }
+async function buildHtmlChatOl(chatRecord) {
+    const dateTime = new Date().toLocaleString();
+    const respuesta = await fetch('plantillas/ol-chat.hbs');
+    const plantilla = await respuesta.text();
+    const template = Handlebars.compile(plantilla);
+    const html = template({ chatRecord:chatRecord, dateTime:dateTime}  );
+    return html;
+}
 
 
 //----------------------------------------

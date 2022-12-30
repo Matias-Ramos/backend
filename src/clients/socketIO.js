@@ -1,19 +1,18 @@
-import ProductModel from "../models/ProductModel.js";
+import ProductModel from "../CRUD/ProductModel.js";
+import chatsModel from "../CRUD/chatsModel.js";
 
 //----------------------------------------
-// Local variables declaration
-let chatRecord = [];
+// Class instanciations
 const productModel = new ProductModel("products");
+const chatModel = new chatsModel("chats");
 
-//----------------------------------------
 //----------------------------------------
 function socketBehaviour (socket, io) {
-    //--------products----------
-    //emit
+    //prd-emit
     productModel.fetchProducts()
     .then( purchaseList => 
         socket.emit('newPurchaseList', purchaseList));
-    //receive
+    //prd-receive
     socket.on('newPurchaseObj', purchaseObj =>{
         productModel.createProduct(purchaseObj)
         .then( purchaseList =>{
@@ -21,14 +20,16 @@ function socketBehaviour (socket, io) {
         } )
     })
     
-    //--------chats----------
-    //emit
-    socket.emit('newChatRecord', chatRecord);
-    //receive
+    //chat-emit
+    chatModel.fetchMessages()
+    .then( chats => 
+        socket.emit('newChatRecord', chats));
+    //chat-receive
     socket.on('newMessageObj', message=>{
-        chatRecord.push(message);
-        io.sockets.emit('newChatRecord', chatRecord);
-    });
-    //----------------------------------------
+        chatModel.saveMessage(message)
+        .then( chats => {
+            io.sockets.emit('newChatRecord', chats);
+        })
+    })
 }
 export {socketBehaviour}; 

@@ -1,4 +1,4 @@
-{{!-- <style>
+<style>
     li{list-style: none;}
     b{color:blue;}
     .dateTime{color:brown}
@@ -10,8 +10,8 @@
 <div>
     <ol>
         {{#each chatRecord}}
-            <li class="mt-1"><b>{{this.userEmail}}</b> <span class="dateTime">[ {{../dateTime}} ]</span> : <i>{{this.userMssg}}</i></li>
+            <li class="mt-1"><b>{{this.email}}</b> <span class="dateTime">[ {{../dateTime}} ]</span> : <i>{{this.message}}</i></li>
         {{/each}}
     </ol>
 </div>
-{{/if}} --}}
+{{/if}}
